@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DK Phone Store</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="css/styles.css"> 
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+</head>
+<body class="bg-gray-50">
+    <!-- Header -->
+    <header class="bg-white shadow-sm border-b">
+        <div class="container mx-auto px-4">
+            <div class="flex items-center justify-between h-16">
+                <!-- Logo -->
+                <button id="logoBtn" onclick="showUserView()" class="flex items-center focus:outline-none">
+                    <span class="text-2xl font-bold text-gray-800">PhoneStore.</span>
+                    <span class="ml-1 text-sm text-gray-600">CyberSoft</span>
+                </button>
+               
+                <div class="flex items-center space-x-8">
+                    <div class="flex items-center space-x-4">
+                        <button class="text-gray-600 hover:text-gray-800 transition-colors">
+                            <i class="fas fa-search text-lg"></i>
+                        </button>
+                        <button onclick="toggleCart()" class="relative text-gray-600 hover:text-gray-800 transition-colors">
+                            <i class="fas fa-shopping-cart text-lg"></i>
+                            <span id="cartCount" class="absolute -top-2 -right-2 bg-red-500 text-white text-xs rounded-full w-5 h-5 flex items-center justify-center hidden">0</span>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Giao diện người dùng -->
+    <div id="userView">
+        <!-- Banner -->
+        <section class="bg-white">
+            <div class="container mx-auto px-4 py-6">
+                <div class="relative">
+                    <div id="bannerSlider" class="overflow-hidden rounded-2xl shadow-2xl">
+                        <div class="flex transition-transform duration-500 ease-in-out" id="bannerTrack">
+                            <!-- Slide 1 - iPhone -->
+                            <div class="w-full flex-shrink-0">
+                                <div class="banner-slide slide-1 relative h-96 md:h-[500px] flex items-center">
+                                    <div class="banner-overlay absolute inset-0 rounded-2xl"></div>
+                                    <div class="relative z-10 w-full px-8 md:px-16">
+                                        <div class="max-w-2xl">
+                                            <div class="glassmorphism inline-block px-4 py-2 rounded-full mb-6">
+                                                <span class="text-white text-sm font-semibold">✨ NEW ARRIVAL</span>
+                                            </div>
+                                            <h2 class="text-4xl md:text-6xl font-bold text-white text-shadow mb-4 animate-float">
+                                                iPHONE MỚI NHẤT
+                                            </h2>
+                                            <p class="text-xl md:text-2xl text-gray-200 mb-8 text-shadow">
+                                                Trải nghiệm công nghệ tuyệt vời với thiết kế hoàn hảo
+                                            </p>
+                                            <button onclick="filterAndScroll('iphone')" class="glassmorphism text-white px-8 py-4 rounded-full font-semibold hover:bg-white hover:text-gray-800 transition-all duration-300 transform hover:scale-105 animate-pulse-slow">
+                                                <i class="fas fa-rocket mr-2"></i>
+                                                Xem ngay
+                                            </button>
+                                        </div>
+                                    </div>
+                                    <!-- Decorative elements -->
+                                    <div class="absolute top-10 right-10 w-20 h-20 bg-white bg-opacity-10 rounded-full animate-float"></div>
+                                    <div class="absolute bottom-10 right-20 w-12 h-12 bg-white bg-opacity-20 rounded-full animate-float" style="animation-delay: -2s;"></div>
+                                </div>
+                            </div>
+
+                            <!-- Slide 2 - Samsung -->
+                            <div class="w-full flex-shrink-0">
+                                <div class="banner-slide slide-2 relative h-96 md:h-[500px] flex items-center">
+                                    <div class="banner-overlay absolute inset-0 rounded-2xl"></div>
+                                    <div class="relative z-10 w-full px-8 md:px-16">
+                                        <div class="max-w-2xl">
+                                            <div class="glassmorphism inline-block px-4 py-2 rounded-full mb-6">
+                                                <span class="text-white text-sm font-semibold">🔥 HOT DEAL</span>
+                                            </div>
+                                            <h2 class="text-4xl md:text-6xl font-bold text-white text-shadow mb-4 animate-float">
+                                                SAMSUNG GALAXY
+                                            </h2>
+                                            <p class="text-xl md:text-2xl text-gray-200 mb-8 text-shadow">
+                                                Thiết kế đột phá, hiệu năng vượt trội không giới hạn
+                                            </p>
+                                            <button onclick="filterAndScroll('Samsung')" class="glassmorphism text-white px-8 py-4 rounded-full font-semibold hover:bg-white hover:text-gray-800 transition-all duration-300 transform hover:scale-105 animate-pulse-slow">
+                                                <i class="fas fa-star mr-2"></i>
+                                                Xem ngay
+                                            </button>
+                                        </div>
+                                    </div>
+                                    <!-- Decorative elements -->
+                                    <div class="absolute top-16 right-16 w-16 h-16 border-2 border-white border-opacity-30 rounded-full animate-float"></div>
+                                    <div class="absolute bottom-20 right-10 w-8 h-8 bg-white bg-opacity-20 rotate-45 animate-float" style="animation-delay: -1s;"></div>
+                                </div>
+                            </div>
+
+                            <!-- Slide 3 - Special Offer -->
+                            <div class="w-full flex-shrink-0">
+                                <div class="banner-slide slide-3 relative h-96 md:h-[500px] flex items-center">
+                                    <div class="banner-overlay absolute inset-0 rounded-2xl"></div>
+                                    <div class="relative z-10 w-full px-8 md:px-16">
+                                        <div class="max-w-2xl">
+                                            <div class="glassmorphism inline-block px-4 py-2 rounded-full mb-6">
+                                                <span class="text-white text-sm font-semibold">💫 LIMITED TIME</span>
+                                            </div>
+                                            <h2 class="text-4xl md:text-6xl font-bold text-white text-shadow mb-4 animate-float">
+                                                KHUYẾN MÃI<br>
+                                                <span class="text-yellow-400">ĐẶC BIỆT</span>
+                                            </h2>
+                                            <p class="text-xl md:text-2xl text-gray-200 mb-8 text-shadow">
+                                                Giảm giá lên đến <span class="text-yellow-400 font-bold">30%</span> cho tất cả sản phẩm
+                                            </p>
+                                            <button onclick="filterAndScroll('all')" class="glassmorphism text-white px-8 py-4 rounded-full font-semibold hover:bg-white hover:text-gray-800 transition-all duration-300 transform hover:scale-105 animate-pulse-slow">
+                                                <i class="fas fa-shopping-bag mr-2"></i>
+                                                Xem ngay
+                                            </button>
+                                        </div>
+                                    </div>
+                                    <!-- Decorative elements -->
+                                    <div class="absolute top-12 right-12 text-4xl text-yellow-400 animate-float">⭐</div>
+                                    <div class="absolute bottom-16 right-16 text-3xl text-white animate-float" style="animation-delay: -1.5s;">💎</div>
+                                    <div class="absolute top-1/2 right-8 text-2xl text-yellow-300 animate-float" style="animation-delay: -3s;">✨</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Dots indicator -->
+                    <div class="flex justify-center mt-6 space-x-3">
+                        <button class="w-4 h-4 rounded-full bg-blue-600 dot active shadow-lg transform transition-all duration-300 hover:scale-125" data-slide="0"></button>
+                        <button class="w-4 h-4 rounded-full bg-gray-400 dot shadow-lg transform transition-all duration-300 hover:scale-125" data-slide="1"></button>
+                        <button class="w-4 h-4 rounded-full bg-gray-400 dot shadow-lg transform transition-all duration-300 hover:scale-125" data-slide="2"></button>
+                    </div>
+                </div>
+            </section>
+
+        <!-- Bộ lọc sản phẩm -->
+        <section id="productsSection" class="container mx-auto px-4 py-8">
+            <div class="flex items-center justify-between mb-8">
+                <h2 class="text-2xl font-bold text-gray-800">SẢN PHẨM </h2>
+                
+                <!-- Filter Dropdown -->
+                <div class="relative">
+                    <select id="productFilter" class="appearance-none bg-white border border-gray-300 rounded-lg px-4 py-2 pr-8 focus:outline-none focus:ring-2 focus:ring-blue-500">
+                        <option value="all">Tất cả</option>
+                        <option value="iphone">iPhone</option>
+                        <option value="samsung">Samsung</option>
+                    </select>
+                    <i class="fas fa-chevron-down absolute right-3 top-1/2 transform -translate-y-1/2 text-gray-400 pointer-events-none"></i>
+                </div>
+            </div>
+
+            <!-- Product Grid -->
+            <div id="productList" class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
+                <!-- Products will be rendered here -->
+            </div>
+        </section>
+    </div>
+
+
+    <!-- Trang giỏ hàng -->
+    <div id="mainContent"></div>
+
+    <!-- Ẩn sidebar giỏ hàng cũ -->
+    <div id="cartSidebar" class="hidden"></div>
+
+    <!-- Modal chi tiết sản phẩm -->
+    <div id="productModal" class="fixed inset-0 bg-black bg-opacity-50 z-50 hidden items-center justify-center p-4">
+        <div class="bg-white rounded-lg max-w-4xl w-full max-h-[90vh] overflow-y-auto">
+            <div class="p-6 border-b">
+                <div class="flex items-center justify-between">
+                    <button onclick="closeProductModal()" class="text-gray-400 hover:text-gray-600">
+                        <i class="fas fa-arrow-left mr-2"></i> BACK
+                    </button>
+                </div>
+            </div>
+            
+            <div id="productModalContent" class="p-6">
+              
+            </div>
+        </div>
+    </div>
+
+    <!-- Overlay giỏ hàng -->
+    <div id="cartOverlay" class="fixed inset-0 bg-black bg-opacity-50 z-40 hidden" onclick="toggleCart()"></div>
+
+    <!-- Script -->
+    <script>
+        // View management functions
+        function showUserView() {
+            document.getElementById('userView').classList.remove('hidden');
+            var cartPage = document.getElementById('cartPage');
+            if (cartPage) cartPage.classList.add('hidden');
+            var checkoutPage = document.getElementById('checkoutPage');
+            if (checkoutPage) checkoutPage.classList.add('hidden');
+            var successPage = document.getElementById('successPage');
+            if (successPage) successPage.classList.add('hidden');
+        }
+
+        //
+        function filterAndScroll(brand) {
+           
+            if (typeof filterProducts === 'function') {
+                filterProducts(brand);
+            }
+            
+          
+            const productsSection = document.getElementById('productsSection');
+            if (productsSection) {
+                productsSection.scrollIntoView({
+                    behavior: 'smooth',
+                    block: 'start'
+                });
+                
+              
+                setTimeout(() => {
+                    productsSection.style.transform = 'scale(1.02)';
+                    productsSection.style.transition = 'transform 0.3s ease-in-out';
+                    
+                    setTimeout(() => {
+                        productsSection.style.transform = 'scale(1)';
+                    }, 800);
+                }, 500);
+            }
+        }
+    </script>
+    <script type="module" src="js/main.js"></script>
+</body>
+</html>
