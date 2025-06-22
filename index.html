@@ -1,14 +1,16 @@
 <!DOCTYPE html>
 <html lang="vi">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>DK Phone Store</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="css/styles.css"> 
+    <link rel="stylesheet" href="css/styles.css">
     <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
 </head>
+
 <body class="bg-gray-50">
     <!-- Header -->
     <header class="bg-white shadow-sm border-b">
@@ -19,15 +21,19 @@
                     <span class="text-2xl font-bold text-gray-800">PhoneStore.</span>
                     <span class="ml-1 text-sm text-gray-600">CyberSoft</span>
                 </button>
-               
+                <!-- Nhóm phải: Admin + search + cart -->
                 <div class="flex items-center space-x-8">
+                    <button id="adminBtn" onclick="showAdminView()"
+                        class="text-gray-700 hover:text-blue-600 font-medium transition-colors">ADMIN</button>
                     <div class="flex items-center space-x-4">
                         <button class="text-gray-600 hover:text-gray-800 transition-colors">
                             <i class="fas fa-search text-lg"></i>
                         </button>
-                        <button onclick="toggleCart()" class="relative text-gray-600 hover:text-gray-800 transition-colors">
+                        <button onclick="toggleCart()"
+                            class="relative text-gray-600 hover:text-gray-800 transition-colors">
                             <i class="fas fa-shopping-cart text-lg"></i>
-                            <span id="cartCount" class="absolute -top-2 -right-2 bg-red-500 text-white text-xs rounded-full w-5 h-5 flex items-center justify-center hidden">0</span>
+                            <span id="cartCount"
+                                class="absolute -top-2 -right-2 bg-red-500 text-white text-xs rounded-full w-5 h-5 flex items-center justify-center hidden">0</span>
                         </button>
                     </div>
                 </div>
@@ -52,21 +58,26 @@
                                             <div class="glassmorphism inline-block px-4 py-2 rounded-full mb-6">
                                                 <span class="text-white text-sm font-semibold">✨ NEW ARRIVAL</span>
                                             </div>
-                                            <h2 class="text-4xl md:text-6xl font-bold text-white text-shadow mb-4 animate-float">
+                                            <h2
+                                                class="text-4xl md:text-6xl font-bold text-white text-shadow mb-4 animate-float">
                                                 iPHONE MỚI NHẤT
                                             </h2>
                                             <p class="text-xl md:text-2xl text-gray-200 mb-8 text-shadow">
                                                 Trải nghiệm công nghệ tuyệt vời với thiết kế hoàn hảo
                                             </p>
-                                            <button onclick="filterAndScroll('iphone')" class="glassmorphism text-white px-8 py-4 rounded-full font-semibold hover:bg-white hover:text-gray-800 transition-all duration-300 transform hover:scale-105 animate-pulse-slow">
+                                            <button onclick="filterAndScroll('iphone')"
+                                                class="glassmorphism text-white px-8 py-4 rounded-full font-semibold hover:bg-white hover:text-gray-800 transition-all duration-300 transform hover:scale-105 animate-pulse-slow">
                                                 <i class="fas fa-rocket mr-2"></i>
                                                 Xem ngay
                                             </button>
                                         </div>
                                     </div>
                                     <!-- Decorative elements -->
-                                    <div class="absolute top-10 right-10 w-20 h-20 bg-white bg-opacity-10 rounded-full animate-float"></div>
-                                    <div class="absolute bottom-10 right-20 w-12 h-12 bg-white bg-opacity-20 rounded-full animate-float" style="animation-delay: -2s;"></div>
+                                    <div
+                                        class="absolute top-10 right-10 w-20 h-20 bg-white bg-opacity-10 rounded-full animate-float">
+                                    </div>
+                                    <div class="absolute bottom-10 right-20 w-12 h-12 bg-white bg-opacity-20 rounded-full animate-float"
+                                        style="animation-delay: -2s;"></div>
                                 </div>
                             </div>
 
@@ -79,21 +90,26 @@
                                             <div class="glassmorphism inline-block px-4 py-2 rounded-full mb-6">
                                                 <span class="text-white text-sm font-semibold">🔥 HOT DEAL</span>
                                             </div>
-                                            <h2 class="text-4xl md:text-6xl font-bold text-white text-shadow mb-4 animate-float">
+                                            <h2
+                                                class="text-4xl md:text-6xl font-bold text-white text-shadow mb-4 animate-float">
                                                 SAMSUNG GALAXY
                                             </h2>
                                             <p class="text-xl md:text-2xl text-gray-200 mb-8 text-shadow">
                                                 Thiết kế đột phá, hiệu năng vượt trội không giới hạn
                                             </p>
-                                            <button onclick="filterAndScroll('Samsung')" class="glassmorphism text-white px-8 py-4 rounded-full font-semibold hover:bg-white hover:text-gray-800 transition-all duration-300 transform hover:scale-105 animate-pulse-slow">
+                                            <button onclick="filterAndScroll('Samsung')"
+                                                class="glassmorphism text-white px-8 py-4 rounded-full font-semibold hover:bg-white hover:text-gray-800 transition-all duration-300 transform hover:scale-105 animate-pulse-slow">
                                                 <i class="fas fa-star mr-2"></i>
                                                 Xem ngay
                                             </button>
                                         </div>
                                     </div>
                                     <!-- Decorative elements -->
-                                    <div class="absolute top-16 right-16 w-16 h-16 border-2 border-white border-opacity-30 rounded-full animate-float"></div>
-                                    <div class="absolute bottom-20 right-10 w-8 h-8 bg-white bg-opacity-20 rotate-45 animate-float" style="animation-delay: -1s;"></div>
+                                    <div
+                                        class="absolute top-16 right-16 w-16 h-16 border-2 border-white border-opacity-30 rounded-full animate-float">
+                                    </div>
+                                    <div class="absolute bottom-20 right-10 w-8 h-8 bg-white bg-opacity-20 rotate-45 animate-float"
+                                        style="animation-delay: -1s;"></div>
                                 </div>
                             </div>
 
@@ -106,14 +122,17 @@
                                             <div class="glassmorphism inline-block px-4 py-2 rounded-full mb-6">
                                                 <span class="text-white text-sm font-semibold">💫 LIMITED TIME</span>
                                             </div>
-                                            <h2 class="text-4xl md:text-6xl font-bold text-white text-shadow mb-4 animate-float">
+                                            <h2
+                                                class="text-4xl md:text-6xl font-bold text-white text-shadow mb-4 animate-float">
                                                 KHUYẾN MÃI<br>
                                                 <span class="text-yellow-400">ĐẶC BIỆT</span>
                                             </h2>
                                             <p class="text-xl md:text-2xl text-gray-200 mb-8 text-shadow">
-                                                Giảm giá lên đến <span class="text-yellow-400 font-bold">30%</span> cho tất cả sản phẩm
+                                                Giảm giá lên đến <span class="text-yellow-400 font-bold">30%</span> cho
+                                                tất cả sản phẩm
                                             </p>
-                                            <button onclick="filterAndScroll('all')" class="glassmorphism text-white px-8 py-4 rounded-full font-semibold hover:bg-white hover:text-gray-800 transition-all duration-300 transform hover:scale-105 animate-pulse-slow">
+                                            <button onclick="filterAndScroll('all')"
+                                                class="glassmorphism text-white px-8 py-4 rounded-full font-semibold hover:bg-white hover:text-gray-800 transition-all duration-300 transform hover:scale-105 animate-pulse-slow">
                                                 <i class="fas fa-shopping-bag mr-2"></i>
                                                 Xem ngay
                                             </button>
@@ -121,34 +140,44 @@
                                     </div>
                                     <!-- Decorative elements -->
                                     <div class="absolute top-12 right-12 text-4xl text-yellow-400 animate-float">⭐</div>
-                                    <div class="absolute bottom-16 right-16 text-3xl text-white animate-float" style="animation-delay: -1.5s;">💎</div>
-                                    <div class="absolute top-1/2 right-8 text-2xl text-yellow-300 animate-float" style="animation-delay: -3s;">✨</div>
+                                    <div class="absolute bottom-16 right-16 text-3xl text-white animate-float"
+                                        style="animation-delay: -1.5s;">💎</div>
+                                    <div class="absolute top-1/2 right-8 text-2xl text-yellow-300 animate-float"
+                                        style="animation-delay: -3s;">✨</div>
                                 </div>
                             </div>
                         </div>
                     </div>
                     <!-- Dots indicator -->
                     <div class="flex justify-center mt-6 space-x-3">
-                        <button class="w-4 h-4 rounded-full bg-blue-600 dot active shadow-lg transform transition-all duration-300 hover:scale-125" data-slide="0"></button>
-                        <button class="w-4 h-4 rounded-full bg-gray-400 dot shadow-lg transform transition-all duration-300 hover:scale-125" data-slide="1"></button>
-                        <button class="w-4 h-4 rounded-full bg-gray-400 dot shadow-lg transform transition-all duration-300 hover:scale-125" data-slide="2"></button>
+                        <button
+                            class="w-4 h-4 rounded-full bg-blue-600 dot active shadow-lg transform transition-all duration-300 hover:scale-125"
+                            data-slide="0"></button>
+                        <button
+                            class="w-4 h-4 rounded-full bg-gray-400 dot shadow-lg transform transition-all duration-300 hover:scale-125"
+                            data-slide="1"></button>
+                        <button
+                            class="w-4 h-4 rounded-full bg-gray-400 dot shadow-lg transform transition-all duration-300 hover:scale-125"
+                            data-slide="2"></button>
                     </div>
                 </div>
-            </section>
+        </section>
 
         <!-- Bộ lọc sản phẩm -->
         <section id="productsSection" class="container mx-auto px-4 py-8">
             <div class="flex items-center justify-between mb-8">
                 <h2 class="text-2xl font-bold text-gray-800">SẢN PHẨM </h2>
-                
+
                 <!-- Filter Dropdown -->
                 <div class="relative">
-                    <select id="productFilter" class="appearance-none bg-white border border-gray-300 rounded-lg px-4 py-2 pr-8 focus:outline-none focus:ring-2 focus:ring-blue-500">
+                    <select id="productFilter"
+                        class="appearance-none bg-white border border-gray-300 rounded-lg px-4 py-2 pr-8 focus:outline-none focus:ring-2 focus:ring-blue-500">
                         <option value="all">Tất cả</option>
                         <option value="iphone">iPhone</option>
                         <option value="samsung">Samsung</option>
                     </select>
-                    <i class="fas fa-chevron-down absolute right-3 top-1/2 transform -translate-y-1/2 text-gray-400 pointer-events-none"></i>
+                    <i
+                        class="fas fa-chevron-down absolute right-3 top-1/2 transform -translate-y-1/2 text-gray-400 pointer-events-none"></i>
                 </div>
             </div>
 
@@ -159,6 +188,128 @@
         </section>
     </div>
 
+    <!-- Giao diện admin -->
+    <div id="adminView" class="hidden">
+        <div class="container mx-auto px-4 py-8">
+            <div class="mb-8">
+                <h1 class="text-3xl font-bold text-gray-800 mb-4">QUẢN LÝ SẢN PHẨM</h1>
+                <p class="text-gray-600">Thêm, sửa, xóa sản phẩm trong hệ thống</p>
+            </div>
+
+            <!-- Form sản phẩm -->
+            <div class="bg-white rounded-lg shadow-sm border p-6 mb-8">
+                <h2 class="text-xl font-semibold mb-4">Thêm sản phẩm mới</h2>
+                <form id="addProductForm" class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                    <div>
+                        <label class="block text-sm font-medium text-gray-700 mb-2">Tên sản phẩm</label>
+                        <input type="text" id="productName"
+                            class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+                            required>
+                    </div>
+                    <div>
+                        <label class="block text-sm font-medium text-gray-700 mb-2">Giá ($)</label>
+                        <input type="number" id="productPrice"
+                            class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+                            required>
+                    </div>
+                    <div>
+                        <label class="block text-sm font-medium text-gray-700 mb-2">Màn hình</label>
+                        <input type="text" id="productScreen"
+                            class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+                            required>
+                    </div>
+                    <div>
+                        <label class="block text-sm font-medium text-gray-700 mb-2">Camera sau</label>
+                        <input type="text" id="productBackCamera"
+                            class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+                            required>
+                    </div>
+                    <div>
+                        <label class="block text-sm font-medium text-gray-700 mb-2">Camera trước</label>
+                        <input type="text" id="productFrontCamera"
+                            class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+                            required>
+                    </div>
+                    <div>
+                        <label class="block text-sm font-medium text-gray-700 mb-2">Hình ảnh (URL)</label>
+                        <input type="url" id="productImg"
+                            class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+                            required>
+                    </div>
+                    <div>
+                        <label class="block text-sm font-medium text-gray-700 mb-2">Loại</label>
+                        <select id="productType"
+                            class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+                            required>
+                            <option value="">Chọn loại</option>
+                            <option value="iphone">iPhone</option>
+                            <option value="Samsung">Samsung</option>
+                        </select>
+                    </div>
+                    <div class="md:col-span-2">
+                        <label class="block text-sm font-medium text-gray-700 mb-2">Mô tả</label>
+                        <textarea id="productDesc" rows="3"
+                            class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"></textarea>
+                    </div>
+                    <div class="md:col-span-2">
+                        <button type="submit"
+                            class="bg-blue-600 text-white px-6 py-2 rounded-lg hover:bg-blue-700 transition-colors">
+                            <i class="fas fa-plus mr-2"></i>Thêm sản phẩm
+                        </button>
+                        <button type="button" id="cancelEditBtn"
+                            class="ml-2 bg-gray-500 text-white px-6 py-2 rounded-lg hover:bg-gray-600 transition-colors hidden">
+                            <i class="fas fa-times mr-2"></i>Hủy
+                        </button>
+                    </div>
+                </form>
+            </div>
+
+            <!-- Bảng sản phẩm -->
+            <div class="bg-white rounded-lg shadow-sm border">
+                <div class="p-6 border-b">
+                    <h2 class="text-xl font-semibold">Danh sách sản phẩm</h2>
+                </div>
+                <div class="flex items-center justify-between mb-4">
+                    <input id="adminSearchInput" type="text" placeholder="Tìm kiếm theo tên..."
+                        class="border px-3 py-2 rounded-lg w-72 ml-2 mr-4">
+                    <select id="sortPriceSelect" class="border px-3 py-2 rounded-lg bg-gray-200 hover:bg-blue-200">
+                        <option value="default">Sắp xếp giá</option>
+                        <option value="asc">Giá tăng dần</option>
+                        <option value="desc">Giá giảm dần</option>
+                    </select>
+                </div>
+                <div class="overflow-x-auto">
+                    <table class="w-full">
+                        <thead class="bg-gray-50">
+                            <tr>
+                                <th
+                                    class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                                    ID</th>
+                                <th
+                                    class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                                    Hình ảnh</th>
+                                <th
+                                    class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                                    Tên</th>
+                                <th
+                                    class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                                    Giá</th>
+                                <th
+                                    class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                                    Loại</th>
+                                <th
+                                    class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                                    Thao tác</th>
+                            </tr>
+                        </thead>
+                        <tbody id="adminProductList" class="bg-white divide-y divide-gray-200">
+                            <!-- Admin product list will be rendered here -->
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
 
     <!-- Trang giỏ hàng -->
     <div id="mainContent"></div>
@@ -176,9 +327,9 @@
                     </button>
                 </div>
             </div>
-            
+
             <div id="productModalContent" class="p-6">
-              
+
             </div>
         </div>
     </div>
@@ -191,34 +342,54 @@
         // View management functions
         function showUserView() {
             document.getElementById('userView').classList.remove('hidden');
+            document.getElementById('adminView').classList.add('hidden');
+            // Ẩn các trang phụ nếu có
             var cartPage = document.getElementById('cartPage');
             if (cartPage) cartPage.classList.add('hidden');
             var checkoutPage = document.getElementById('checkoutPage');
             if (checkoutPage) checkoutPage.classList.add('hidden');
             var successPage = document.getElementById('successPage');
             if (successPage) successPage.classList.add('hidden');
+            // Update button styles
+            document.getElementById('adminBtn').classList.remove('text-blue-600', 'font-bold');
+            document.getElementById('adminBtn').classList.add('text-gray-700');
+        }
+
+        function showAdminView() {
+            document.getElementById('userView').classList.add('hidden');
+            document.getElementById('adminView').classList.remove('hidden');
+            // Ẩn 2 nút Samsung, Apple
+            document.getElementById('samsungBtn').style.display = 'none';
+            document.getElementById('appleBtn').style.display = 'none';
+            // Update button styles
+            document.getElementById('adminBtn').classList.add('text-blue-600', 'font-bold');
+            document.getElementById('adminBtn').classList.remove('text-gray-700');
+            // Render admin product list
+            if (typeof renderAdminProductList === 'function') {
+                renderAdminProductList();
+            }
         }
 
         //
         function filterAndScroll(brand) {
-           
+
             if (typeof filterProducts === 'function') {
                 filterProducts(brand);
             }
-            
-          
+
+
             const productsSection = document.getElementById('productsSection');
             if (productsSection) {
                 productsSection.scrollIntoView({
                     behavior: 'smooth',
                     block: 'start'
                 });
-                
-              
+
+
                 setTimeout(() => {
                     productsSection.style.transform = 'scale(1.02)';
                     productsSection.style.transition = 'transform 0.3s ease-in-out';
-                    
+
                     setTimeout(() => {
                         productsSection.style.transform = 'scale(1)';
                     }, 800);
@@ -228,4 +399,5 @@
     </script>
     <script type="module" src="js/main.js"></script>
 </body>
+
 </html>
