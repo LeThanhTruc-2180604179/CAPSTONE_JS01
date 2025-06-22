@@ -475,54 +475,13 @@ window.addEventListener("DOMContentLoaded", () => {
   renderProductList();
 });
 
-function renderProductList(brand) {
-  const main = document.getElementById("mainContent");
-  // Banner section
-  const bannerHTML = `
-      <section class="bg-white mb-10">
-        <div class="container mx-auto px-4 py-6">
-          <div class="relative">
-            <div class="overflow-hidden rounded-2xl shadow-2xl">
-              <div class="flex transition-transform duration-500 ease-in-out">
-                <div class="w-full flex-shrink-0">
-                  <div class="banner-slide slide-1 relative h-96 md:h-[500px] flex items-center">
-                    <div class="banner-overlay absolute inset-0 rounded-2xl"></div>
-                    <div class="relative z-10 w-full px-8 md:px-16">
-                      <div class="max-w-2xl">
-                        <div class="glassmorphism inline-block px-4 py-2 rounded-full mb-6">
-                          <span class="text-white text-sm font-semibold">✨ NEW ARRIVAL</span>
-                        </div>
-                        <h2 class="text-4xl md:text-6xl font-bold text-white text-shadow mb-4 animate-float">
-                          iPHONE MỚI NHẤT
-                        </h2>
-                        <p class="text-xl md:text-2xl text-gray-200 mb-8 text-shadow">
-                          Trải nghiệm công nghệ tuyệt vời với thiết kế hoàn hảo
-                        </p>
-                        <button onclick="renderProductList('iphone')" class="glassmorphism text-white px-8 py-4 rounded-full font-semibold hover:bg-white hover:text-gray-800 transition-all duration-300 transform hover:scale-105 animate-pulse-slow">
-                          <i class="fas fa-rocket mr-2"></i>
-                          Khám phá ngay
-                        </button>
-                      </div>
-                    </div>
-                    <div class="absolute top-10 right-10 w-20 h-20 bg-white bg-opacity-10 rounded-full animate-float"></div>
-                    <div class="absolute bottom-10 right-20 w-12 h-12 bg-white bg-opacity-20 rounded-full animate-float" style="animation-delay: -2s;"></div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>`;
-  // Product section
-  const products = productController.productService.filterByType(brand);
-  const productSection = `
-      <section>
-        <div class="max-w-6xl mx-auto px-4">
-          <h2 class="text-2xl font-bold text-gray-800 mb-6">SẢN PHẨM</h2>
-          <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-            ${products.map(renderProductCard).join("")}
-          </div>
-        </div>
-      </section>`;
-  main.innerHTML = bannerHTML + productSection;
+// Lọc và cuộn đến sản phẩm
+function filterAndScroll(brand) {
+  showUserView();
+  // Sửa ở đây: Gọi trực tiếp hàm render của controller
+  productController.filterProducts(brand); 
+  const productsSection = document.getElementById("productsSection");
+  if (productsSection) {
+    // ... existing code ... -->
+  }
 }
